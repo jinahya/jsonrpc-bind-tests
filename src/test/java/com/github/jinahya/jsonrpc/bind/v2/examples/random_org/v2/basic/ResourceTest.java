@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
+package com.github.jinahya.jsonrpc.bind.v2.examples.random_org.v2.basic;
 
 /*-
  * #%L
@@ -20,16 +20,19 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
  * #L%
  */
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.github.jinahya.jsonrpc.bind.v2.examples.ExampleResourceTest;
+import org.junit.jupiter.api.Test;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-class NamedParams {
+import java.io.IOException;
 
-    public int subtrahend;
+class ResourceTest extends ExampleResourceTest {
 
-    public int minuend;
+    @Test
+    void r_generateInteger_01_request() throws IOException {
+        acceptResourceStream(
+                "generateIntegers_01_request.json",
+                s -> {
+                }
+        );
+    }
 }

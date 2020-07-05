@@ -1,10 +1,10 @@
-package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
+package com.github.jinahya.jsonrpc.bind.v2.spi;
 
 /*-
  * #%L
- * jsonrpc-bind-tests
+ * jsonrpc-bind
  * %%
- * Copyright (C) 2020 Jinahya, Inc.
+ * Copyright (C) 2019 - 2020 Jinahya, Inc.
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,16 +20,12 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
  * #L%
  */
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-class NamedParams {
+public abstract class JsonrpcResponseMessageServiceTest
+        extends JsonrpcMessageServiceTest<JsonrpcResponseMessageService, JsonrpcResponseMessage> {
 
-    public int subtrahend;
-
-    public int minuend;
+    protected JsonrpcResponseMessageServiceTest() {
+        super(JsonrpcResponseMessageService.class, JsonrpcResponseMessage.class);
+    }
 }

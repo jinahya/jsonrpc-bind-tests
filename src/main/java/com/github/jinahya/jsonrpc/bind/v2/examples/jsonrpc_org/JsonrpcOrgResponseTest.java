@@ -22,7 +22,7 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
 
 import com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage;
 import com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessageError;
-import com.github.jinahya.jsonrpc.bind.v2.examples.ExampleResourceTest;
+import com.github.jinahya.jsonrpc.bind.v2.examples.ExampleResourceResponseTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -32,15 +32,15 @@ import java.util.List;
 
 import static com.github.jinahya.jsonrpc.bind.BeanValidationTests.requireValid;
 import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage.fromJson;
-import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage.newInstance;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 public abstract class JsonrpcOrgResponseTest
-        extends ExampleResourceTest {
+        extends ExampleResourceResponseTest {
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
@@ -82,11 +82,12 @@ public abstract class JsonrpcOrgResponseTest
         requireValid(message);
         final String json = message.toJson();
         log.debug("json: {}", json);
+        assertNotNull(json);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void e02_named_parameters_01_response() throws IOException {
+    void r_e02_named_parameters_01_response() throws IOException {
         acceptResourceStream(
                 "e02_named_parameters_01_response.json",
                 s -> {
@@ -126,6 +127,18 @@ public abstract class JsonrpcOrgResponseTest
         );
     }
 
+    @Test
+    void w_e02_named_parameters_01_response() throws IOException {
+        final JsonrpcResponseMessage message = newInstance();
+        message.setResultAsObject(19);
+        message.setIdAsInteger(3);
+        requireValid(message);
+        final String json = message.toJson();
+        log.debug("json: {}", json);
+        assertNotNull(json);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
     void e02_named_parameters_02_response() throws IOException {
         acceptResourceStream(
@@ -171,6 +184,7 @@ public abstract class JsonrpcOrgResponseTest
         );
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
     void e04_non_existent_method_response() throws IOException {
         acceptResourceStream(

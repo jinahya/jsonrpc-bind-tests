@@ -20,7 +20,10 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.random_org.v2.basic;
  * #L%
  */
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +35,9 @@ import javax.validation.constraints.NotBlank;
 @ToString
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Slf4j
 public class GenerateIntegersParams {
 

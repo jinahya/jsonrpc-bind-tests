@@ -22,7 +22,7 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
 
 import com.github.jinahya.jsonrpc.bind.JsonrpcBindException;
 import com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage;
-import com.github.jinahya.jsonrpc.bind.v2.examples.ExampleResourceTest;
+import com.github.jinahya.jsonrpc.bind.v2.examples.ExampleResourceRequestTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -32,18 +32,18 @@ import java.util.List;
 
 import static com.github.jinahya.jsonrpc.bind.BeanValidationTests.requireValid;
 import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage.fromJson;
-import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage.newInstance;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 public abstract class JsonrpcOrgRequestTest
-        extends ExampleResourceTest {
+        extends ExampleResourceRequestTest {
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
@@ -82,13 +82,15 @@ public abstract class JsonrpcOrgRequestTest
     }
 
     @Test
-    void w_e01_positional_parameters_01_request() throws IOException {
+    void w_e01_positional_parameters_01_request() {
         final JsonrpcRequestMessage message = newInstance();
         message.setMethod("subtract");
         message.setParamsAsArray(asList(42, 23));
         message.setIdAsInteger(1);
         requireValid(message);
         final String json = message.toJson();
+        log.debug("json: {}", json);
+        assertNotNull(json);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -129,14 +131,15 @@ public abstract class JsonrpcOrgRequestTest
     }
 
     @Test
-    void w_e01_positional_parameters_02_request() throws IOException {
-        final JsonrpcRequestMessage message = JsonrpcRequestMessage.newInstance();
+    void w_e01_positional_parameters_02_request() {
+        final JsonrpcRequestMessage message = newInstance();
         message.setMethod("subtract");
         message.setParamsAsObject(new int[] {23, 42});
         message.setIdAsInteger(2);
         requireValid(message);
         final String json = message.toJson();
         log.debug("json: {}", json);
+        assertNotNull(json);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -180,6 +183,19 @@ public abstract class JsonrpcOrgRequestTest
     }
 
     @Test
+    void w_e02_named_parameters_01_request() {
+        final JsonrpcRequestMessage message = newInstance();
+        message.setMethod("subtract");
+        message.setParamsAsObject(NamedParams.builder().subtrahend(23).minuend(42).build());
+        message.setIdAsInteger(3);
+        requireValid(message);
+        final String json = message.toJson();
+        log.debug("json: {}", json);
+        assertNotNull(json);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Test
     void r_e02_named_parameters_02_request() throws IOException {
         acceptResourceStream(
                 "e02_named_parameters_02_request.json",
@@ -218,6 +234,7 @@ public abstract class JsonrpcOrgRequestTest
         );
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
     void r_e03_notification_01_request() throws IOException {
         acceptResourceStream(

@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
+package com.github.jinahya.jsonrpc.bind.v2.examples;
 
 /*-
  * #%L
@@ -20,16 +20,9 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
  * #L%
  */
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-class NamedParams {
+public abstract class ExampleResourceRequestTest extends ExampleResourceTest {
 
-    public int subtrahend;
-
-    public int minuend;
+    protected abstract JsonrpcRequestMessage newInstance();
 }
