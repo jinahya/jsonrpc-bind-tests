@@ -20,9 +20,6 @@ package com.github.jinahya.jsonrpc.bind.v2.examples;
  * #L%
  */
 
-import com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage;
-
 public abstract class ExampleResourceRequestTest extends ExampleResourceTest {
 
-    protected abstract JsonrpcRequestMessage newInstance();
 }

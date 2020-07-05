@@ -32,6 +32,8 @@ import java.util.List;
 
 import static com.github.jinahya.jsonrpc.bind.BeanValidationTests.requireValid;
 import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage.fromJson;
+import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcRequestMessage.newInstance;
+import static com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org.JsonrpcOrgExamples.forEachRequestResource;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,9 +47,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public abstract class JsonrpcOrgRequestTest
         extends ExampleResourceRequestTest {
 
+    @Test
+    public void testForEachRequestResource() throws IOException {
+        forEachRequestResource(s -> {
+            final JsonrpcRequestMessage message = fromJson(s);
+            requireValid(message);
+        });
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e01_positional_parameters_01_request() throws IOException {
+    public void read_e01_positional_parameters_01_request() throws IOException {
         acceptResourceStream(
                 "e01_positional_parameters_01_request.json",
                 s -> {
@@ -82,7 +92,7 @@ public abstract class JsonrpcOrgRequestTest
     }
 
     @Test
-    void w_e01_positional_parameters_01_request() {
+    public void write_e01_positional_parameters_01_request() {
         final JsonrpcRequestMessage message = newInstance();
         message.setMethod("subtract");
         message.setParamsAsArray(asList(42, 23));
@@ -95,7 +105,7 @@ public abstract class JsonrpcOrgRequestTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e01_positional_parameters_02_request() throws IOException {
+    public void read_e01_positional_parameters_02_request() throws IOException {
         acceptResourceStream(
                 "e01_positional_parameters_02_request.json",
                 s -> {
@@ -131,7 +141,7 @@ public abstract class JsonrpcOrgRequestTest
     }
 
     @Test
-    void w_e01_positional_parameters_02_request() {
+    public void write_e01_positional_parameters_02_request() {
         final JsonrpcRequestMessage message = newInstance();
         message.setMethod("subtract");
         message.setParamsAsObject(new int[] {23, 42});
@@ -144,7 +154,7 @@ public abstract class JsonrpcOrgRequestTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e02_named_parameters_01_request() throws IOException {
+    public void read_e02_named_parameters_01_request() throws IOException {
         acceptResourceStream(
                 "e02_named_parameters_01_request.json",
                 s -> {
@@ -183,7 +193,7 @@ public abstract class JsonrpcOrgRequestTest
     }
 
     @Test
-    void w_e02_named_parameters_01_request() {
+    public void write_e02_named_parameters_01_request() {
         final JsonrpcRequestMessage message = newInstance();
         message.setMethod("subtract");
         message.setParamsAsObject(NamedParams.builder().subtrahend(23).minuend(42).build());
@@ -196,7 +206,7 @@ public abstract class JsonrpcOrgRequestTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e02_named_parameters_02_request() throws IOException {
+    public void read_e02_named_parameters_02_request() throws IOException {
         acceptResourceStream(
                 "e02_named_parameters_02_request.json",
                 s -> {
@@ -236,7 +246,7 @@ public abstract class JsonrpcOrgRequestTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e03_notification_01_request() throws IOException {
+    public void read_e03_notification_01_request() throws IOException {
         acceptResourceStream(
                 "e03_notification_01_request.json",
                 s -> {
@@ -273,8 +283,9 @@ public abstract class JsonrpcOrgRequestTest
         );
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void e03_notification_02_request() throws IOException {
+    public void read_e03_notification_02_request() throws IOException {
         acceptResourceStream(
                 "e03_notification_02_request.json",
                 s -> {

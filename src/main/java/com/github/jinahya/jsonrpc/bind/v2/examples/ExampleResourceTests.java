@@ -28,7 +28,7 @@ import java.util.function.Function;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public final class ExampleResourceTests {
+final class ExampleResourceTests {
 
     /**
      * Applies a stream of specified resource to specified function and returns the result.
@@ -39,8 +39,8 @@ public final class ExampleResourceTests {
      * @return the result of the function
      * @throws IOException if an I/O error occurs.
      */
-    public static <R> R applyResourceStream(final Class<?> clazz, final String name,
-                                            final Function<? super InputStream, ? extends R> function)
+    static <R> R applyResourceStream(final Class<?> clazz, final String name,
+                                     final Function<? super InputStream, ? extends R> function)
             throws IOException {
         requireNonNull(clazz, "clazz is null");
         requireNonNull(name, "name is null");
@@ -51,8 +51,8 @@ public final class ExampleResourceTests {
         }
     }
 
-    public static void acceptResourceStream(final Class<?> clazz, final String name,
-                                            final Consumer<? super InputStream> consumer)
+    static void acceptResourceStream(final Class<?> clazz, final String name,
+                                     final Consumer<? super InputStream> consumer)
             throws IOException {
         requireNonNull(clazz, "clazz is null");
         requireNonNull(name, "name is null");

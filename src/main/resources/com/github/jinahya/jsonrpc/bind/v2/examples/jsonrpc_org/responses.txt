@@ -1,0 +1,7 @@
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e01_positional_parameters_01_response.json
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e01_positional_parameters_02_response.json
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e02_named_parameters_01_response.json
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e02_named_parameters_02_response.json
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e04_non_existent_method_response.json
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e05_invalid_request_object_response.json
+/com/github/jinahya/jsonrpc/bind/v2/examples/jsonrpc_org/e06_invalid_json_response.json

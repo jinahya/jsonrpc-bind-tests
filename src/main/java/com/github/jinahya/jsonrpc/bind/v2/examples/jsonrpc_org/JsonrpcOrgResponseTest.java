@@ -32,6 +32,8 @@ import java.util.List;
 
 import static com.github.jinahya.jsonrpc.bind.BeanValidationTests.requireValid;
 import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage.fromJson;
+import static com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage.newInstance;
+import static com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org.JsonrpcOrgExamples.forEachResponseResource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -42,9 +44,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public abstract class JsonrpcOrgResponseTest
         extends ExampleResourceResponseTest {
 
+    @Test
+    public void testForEachResponseResource() throws IOException {
+        forEachResponseResource(s -> {
+            final JsonrpcResponseMessage message = fromJson(s);
+            requireValid(message);
+        });
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e01_positional_parameters_01_response() throws IOException {
+    public void read_e01_positional_parameters_01_response() throws IOException {
         acceptResourceStream(
                 "e01_positional_parameters_01_response.json",
                 s -> {
@@ -75,7 +85,7 @@ public abstract class JsonrpcOrgResponseTest
     }
 
     @Test
-    void w_e01_positional_parameters_01_response() throws IOException {
+    public void write_e01_positional_parameters_01_response() throws IOException {
         final JsonrpcResponseMessage message = newInstance();
         message.setResultAsObject(19);
         message.setIdAsInteger(1);
@@ -87,7 +97,7 @@ public abstract class JsonrpcOrgResponseTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_e02_named_parameters_01_response() throws IOException {
+    public void read_e02_named_parameters_01_response() throws IOException {
         acceptResourceStream(
                 "e02_named_parameters_01_response.json",
                 s -> {
@@ -128,7 +138,7 @@ public abstract class JsonrpcOrgResponseTest
     }
 
     @Test
-    void w_e02_named_parameters_01_response() throws IOException {
+    public void write_e02_named_parameters_01_response() throws IOException {
         final JsonrpcResponseMessage message = newInstance();
         message.setResultAsObject(19);
         message.setIdAsInteger(3);
@@ -140,7 +150,7 @@ public abstract class JsonrpcOrgResponseTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void e02_named_parameters_02_response() throws IOException {
+    public void read_e02_named_parameters_02_response() throws IOException {
         acceptResourceStream(
                 "e02_named_parameters_02_response.json",
                 s -> {
@@ -186,7 +196,7 @@ public abstract class JsonrpcOrgResponseTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void e04_non_existent_method_response() throws IOException {
+    public void read_e04_non_existent_method_response() throws IOException {
         acceptResourceStream(
                 "e04_non_existent_method_response.json",
                 s -> {

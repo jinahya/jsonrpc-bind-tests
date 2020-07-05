@@ -22,12 +22,16 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.jsonrpc_org;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-@Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-class NamedParams {
+@Builder
+@Slf4j
+public class NamedParams {
 
     public int subtrahend;
 

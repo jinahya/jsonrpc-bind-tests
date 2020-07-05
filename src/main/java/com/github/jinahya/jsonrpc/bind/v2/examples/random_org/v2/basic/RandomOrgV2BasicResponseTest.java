@@ -32,6 +32,7 @@ import static com.github.jinahya.jsonrpc.bind.BeanValidationTests.requireValid;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
@@ -40,7 +41,7 @@ public abstract class RandomOrgV2BasicResponseTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_generateInteger_01_response() throws IOException {
+    public void read_generateInteger_01_response() throws IOException {
         acceptResourceStream(
                 "generateIntegers_01_response.json",
                 s -> {
@@ -77,6 +78,7 @@ public abstract class RandomOrgV2BasicResponseTest
                     }
                     final String json = message.toJson();
                     log.debug("json: {}", json);
+                    assertNotNull(json);
                 }
         );
     }

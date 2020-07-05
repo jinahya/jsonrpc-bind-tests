@@ -42,19 +42,17 @@ public abstract class RandomOrgV2BasicRequestTest
 
     // -----------------------------------------------------------------------------------------------------------------
     @Test
-    void r_generateInteger_01_request() throws IOException {
+    public void read_generateInteger_01_request() throws IOException {
         acceptResourceStream(
                 "generateIntegers_01_request.json",
                 s -> {
                     final JsonrpcRequestMessage message = fromJson(s);
                     requireValid(message);
-                    assertTrue(message.isContextuallyValid());
                     {
                         assertEquals("generateIntegers", message.getMethod());
                     }
                     {
                         assertTrue(message.hasParams());
-                        assertTrue(message.isParamsContextuallyValid());
                         final GenerateIntegersParams params = message.getParamsAsObject(GenerateIntegersParams.class);
                         requireValid(params);
                         assertEquals("6b1e65b9-4186-45c2-8981-b77a9842c4f0", params.getApiKey());
@@ -65,7 +63,6 @@ public abstract class RandomOrgV2BasicRequestTest
                     }
                     {
                         assertTrue(message.hasId());
-                        assertTrue(message.isIdContextuallyValid());
                         assertEquals("42", message.getIdAsString());
                         assertThat(message.getIdAsNumber()).isNotNull().isEqualByComparingTo(BigInteger.valueOf(42L));
                         assertThat(message.getIdAsLong()).isNotNull().isEqualTo(42L);

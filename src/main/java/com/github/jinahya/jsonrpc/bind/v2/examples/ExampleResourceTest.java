@@ -40,7 +40,7 @@ public abstract class ExampleResourceTest {
             throws IOException {
         requireNonNull(name, "name is null");
         requireNonNull(consumer, "consumer is null");
-        ExampleResourceTests.applyResourceStream(getClass(), name, s -> {
+        applyResourceStream(name, s -> {
             consumer.accept(s);
             return null;
         });
