@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.bind.v2.spi;
+package com.github.jinahya.jsonrpc.bind.v2;
 
 /*-
  * #%L
@@ -19,8 +19,6 @@ package com.github.jinahya.jsonrpc.bind.v2.spi;
  * limitations under the License.
  * #L%
  */
-
-import com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage;
 
 public abstract class JsonrpcResponseMessageServiceTest
         extends JsonrpcMessageServiceTest<JsonrpcResponseMessageService, JsonrpcResponseMessage> {

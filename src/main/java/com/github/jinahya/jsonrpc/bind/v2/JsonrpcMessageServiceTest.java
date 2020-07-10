@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.bind.v2.spi;
+package com.github.jinahya.jsonrpc.bind.v2;
 
 /*-
  * #%L
@@ -20,7 +20,6 @@ package com.github.jinahya.jsonrpc.bind.v2.spi;
  * #L%
  */
 
-import com.github.jinahya.jsonrpc.bind.v2.JsonrpcMessage;
 import org.junit.jupiter.api.Test;
 
 import java.util.ServiceLoader;
@@ -28,7 +27,7 @@ import java.util.ServiceLoader;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-abstract class JsonrpcMessageServiceTest<T extends JsonrpcMessageService<U>, U extends JsonrpcMessage> {
+public abstract class JsonrpcMessageServiceTest<T extends JsonrpcMessageService<U>, U extends JsonrpcMessage> {
 
     JsonrpcMessageServiceTest(final Class<T> serviceClass, final Class<U> messageClass) {
         super();
