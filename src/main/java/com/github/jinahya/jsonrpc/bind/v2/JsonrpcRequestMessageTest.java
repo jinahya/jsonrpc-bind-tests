@@ -20,29 +20,32 @@ package com.github.jinahya.jsonrpc.bind.v2;
  * #L%
  */
 
-import static java.util.Objects.requireNonNull;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * An abstract class for testing subclasses of {@link AbstractJsonrpcObject} class.
+ * An abstract class for testing subclasses of {@link AbstractJsonrpcRequestMessage} class.
  *
  * @param <T> subclass type parameter
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public abstract class AbstractJsonrpcObjectTest<T extends AbstractJsonrpcObject> {
+public abstract class JsonrpcRequestMessageTest<T extends AbstractJsonrpcRequestMessage>
+        extends JsonrpcMessageTest<T> {
 
     /**
-     * Creates a new instance with specified object class.
+     * Creates a new instance with specified message class.
      *
-     * @param clazz the object class to test.
+     * @param clazz the message class to test.
      * @see #clazz
      */
-    protected AbstractJsonrpcObjectTest(final Class<T> clazz) {
-        super();
-        this.clazz = requireNonNull(clazz, "clazz is null");
+    protected JsonrpcRequestMessageTest(final Class<T> clazz) {
+        super(clazz);
     }
 
-    /**
-     * The class to test.
-     */
-    protected final Class<T> clazz;
+    @Test
+    public void testNewInstance() {
+        final JsonrpcRequestMessage instance = JsonrpcRequestMessage.newInstance();
+        assertNotNull(instance);
+    }
 }

@@ -20,25 +20,32 @@ package com.github.jinahya.jsonrpc.bind.v2;
  * #L%
  */
 
-import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * An abstract class for testing subclasses of {@link AbstractJsonrpcMessage} class.
+ * An abstract class for testing subclasses of {@link AbstractJsonrpcResponseMessage} class.
  *
  * @param <T> subclass type parameter
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Slf4j
-public abstract class AbstractJsonrpcMessageTest<T extends AbstractJsonrpcMessage>
-        extends AbstractJsonrpcObjectTest<T> {
+public abstract class JsonrpcResponseMessageErrorTest<T extends AbstractJsonrpcResponseMessageError>
+        extends JsonrpcObjectTest<T> {
 
     /**
-     * Creates a new instance with specified message class.
+     * Creates a new instance with specified class.
      *
-     * @param clazz the message class to test.
+     * @param clazz the class to test.
      * @see #clazz
      */
-    protected AbstractJsonrpcMessageTest(final Class<T> clazz) {
+    protected JsonrpcResponseMessageErrorTest(final Class<T> clazz) {
         super(clazz);
+    }
+
+    @Test
+    public void testNewInstance() {
+        final JsonrpcResponseMessageError instance = JsonrpcResponseMessageError.newInstance();
+        assertNotNull(instance);
     }
 }

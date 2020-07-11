@@ -26,7 +26,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -46,13 +46,14 @@ public final class JsonrpcOrgExamples {
         }
     }
 
-    public static void forEachRequestResource(final Consumer<? super InputStream> consumer) throws IOException {
+    public static void forEachRequestResource(final BiConsumer<? super String, ? super InputStream> consumer)
+            throws IOException {
         requireNonNull(consumer, "consumer is null");
         applyRequestResourceNames(s -> {
             s.forEach(n -> {
                 try {
                     try (InputStream i = JsonrpcOrgExamples.class.getResourceAsStream(n)) {
-                        consumer.accept(i);
+                        consumer.accept(n, i);
                     }
                 } catch (final IOException ioe) {
                     throw new RuntimeException(ioe);
@@ -73,13 +74,14 @@ public final class JsonrpcOrgExamples {
         }
     }
 
-    public static void forEachResponseResource(final Consumer<? super InputStream> consumer) throws IOException {
+    public static void forEachResponseResource(final BiConsumer<? super String, ? super InputStream> consumer)
+            throws IOException {
         requireNonNull(consumer, "consumer is null");
         applyResponseResourceNames(s -> {
             s.forEach(n -> {
                 try {
                     try (InputStream i = JsonrpcOrgExamples.class.getResourceAsStream(n)) {
-                        consumer.accept(i);
+                        consumer.accept(n, i);
                     }
                 } catch (final IOException ioe) {
                     throw new RuntimeException(ioe);

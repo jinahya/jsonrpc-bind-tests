@@ -22,9 +22,8 @@ package com.github.jinahya.jsonrpc.bind.v2;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ServiceLoader;
-
 import static java.util.Objects.requireNonNull;
+import static java.util.ServiceLoader.load;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public abstract class JsonrpcMessageServiceTest<T extends JsonrpcMessageService<U>, U extends JsonrpcMessage> {
@@ -48,11 +47,11 @@ public abstract class JsonrpcMessageServiceTest<T extends JsonrpcMessageService<
     }
 
     protected T serviceInstance() {
-        return ServiceLoader.load(serviceClass).iterator().next();
+        return load(serviceClass).iterator().next();
     }
 
     protected U messageInstance() {
-        return ServiceLoader.load(messageClass).iterator().next();
+        return load(messageClass).iterator().next();
     }
 
     protected final Class<T> serviceClass;

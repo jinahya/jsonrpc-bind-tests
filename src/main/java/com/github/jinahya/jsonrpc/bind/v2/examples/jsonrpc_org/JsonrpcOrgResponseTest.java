@@ -41,14 +41,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-public abstract class JsonrpcOrgResponseTest
-        extends ExampleResourceResponseTest {
+public abstract class JsonrpcOrgResponseTest extends ExampleResourceResponseTest {
 
     @Test
     public void testForEachResponseResource() throws IOException {
-        forEachResponseResource(s -> {
+        forEachResponseResource((n, s) -> {
+            log.debug("name: {}", n);
             final JsonrpcResponseMessage message = fromJson(s);
             requireValid(message);
+            final String json = message.toJson();
+            log.debug("json: {}", json);
         });
     }
 
@@ -207,7 +209,7 @@ public abstract class JsonrpcOrgResponseTest
                     }
                     {
                         assertTrue(message.hasError());
-                        final JsonrpcResponseMessageError error = message.getErrorAsDefaultType();
+                        final JsonrpcResponseMessageError error = message.getErrorAs();
                         requireValid(error);
                         assertEquals(-32601, error.getCode());
                         assertEquals("Method not found", error.getMessage());

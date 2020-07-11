@@ -20,22 +20,29 @@ package com.github.jinahya.jsonrpc.bind.v2;
  * #L%
  */
 
+import static java.util.Objects.requireNonNull;
+
 /**
- * An abstract class for testing subclasses of {@link AbstractJsonrpcRequestMessage} class.
+ * An abstract class for testing subclasses of {@link AbstractJsonrpcObject} class.
  *
  * @param <T> subclass type parameter
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public abstract class AbstractJsonrpcRequestMessageTest<T extends AbstractJsonrpcRequestMessage>
-        extends AbstractJsonrpcMessageTest<T> {
+public abstract class JsonrpcObjectTest<T extends AbstractJsonrpcObject> {
 
     /**
-     * Creates a new instance with specified message class.
+     * Creates a new instance with specified object class.
      *
-     * @param clazz the message class to test.
+     * @param clazz the object class to test.
      * @see #clazz
      */
-    protected AbstractJsonrpcRequestMessageTest(final Class<T> clazz) {
-        super(clazz);
+    protected JsonrpcObjectTest(final Class<T> clazz) {
+        super();
+        this.clazz = requireNonNull(clazz, "clazz is null");
     }
+
+    /**
+     * The class to test.
+     */
+    protected final Class<T> clazz;
 }

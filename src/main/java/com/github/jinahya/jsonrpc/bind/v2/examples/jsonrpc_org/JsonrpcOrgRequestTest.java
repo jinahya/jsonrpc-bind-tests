@@ -44,14 +44,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-public abstract class JsonrpcOrgRequestTest
-        extends ExampleResourceRequestTest {
+public abstract class JsonrpcOrgRequestTest extends ExampleResourceRequestTest {
 
     @Test
     public void testForEachRequestResource() throws IOException {
-        forEachRequestResource(s -> {
+        forEachRequestResource((n, s) -> {
+            log.debug("name: {}", n);
             final JsonrpcRequestMessage message = fromJson(s);
             requireValid(message);
+            final String json = message.toJson();
+            log.debug("json: {}", json);
         });
     }
 
