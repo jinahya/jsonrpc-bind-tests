@@ -33,7 +33,7 @@ public abstract class ExampleResourceTest {
             throws IOException {
         requireNonNull(name, "name is null");
         requireNonNull(function, "function is null");
-        return ExampleResourceTests.applyResourceStream(ExampleResourceTest.class, name, function);
+        return ExampleResourceTests.applyResourceStream(getClass(), name, function);
     }
 
     protected void acceptResourceStream(final String name, final Consumer<? super InputStream> consumer)

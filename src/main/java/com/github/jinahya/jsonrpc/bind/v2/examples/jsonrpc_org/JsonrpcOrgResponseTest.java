@@ -61,6 +61,7 @@ public abstract class JsonrpcOrgResponseTest extends ExampleResourceResponseTest
                 "e01_positional_parameters_01_response.json",
                 s -> {
                     final JsonrpcResponseMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertTrue(message.hasResult());
@@ -104,6 +105,7 @@ public abstract class JsonrpcOrgResponseTest extends ExampleResourceResponseTest
                 "e02_named_parameters_01_response.json",
                 s -> {
                     final JsonrpcResponseMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertTrue(message.hasResult());
@@ -157,6 +159,7 @@ public abstract class JsonrpcOrgResponseTest extends ExampleResourceResponseTest
                 "e02_named_parameters_02_response.json",
                 s -> {
                     final JsonrpcResponseMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertTrue(message.hasResult());
@@ -203,6 +206,7 @@ public abstract class JsonrpcOrgResponseTest extends ExampleResourceResponseTest
                 "e04_non_existent_method_response.json",
                 s -> {
                     final JsonrpcResponseMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertFalse(message.hasResult());

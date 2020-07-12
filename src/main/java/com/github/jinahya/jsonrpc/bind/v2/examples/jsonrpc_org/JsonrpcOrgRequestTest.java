@@ -51,6 +51,7 @@ public abstract class JsonrpcOrgRequestTest extends ExampleResourceRequestTest {
         forEachRequestResource((n, s) -> {
             log.debug("name: {}", n);
             final JsonrpcRequestMessage message = fromJson(s);
+            log.debug("message: {}", message);
             requireValid(message);
             final String json = message.toJson();
             log.debug("json: {}", json);
@@ -64,6 +65,7 @@ public abstract class JsonrpcOrgRequestTest extends ExampleResourceRequestTest {
                 "e01_positional_parameters_01_request.json",
                 s -> {
                     final JsonrpcRequestMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertEquals("subtract", message.getMethod());
@@ -112,6 +114,7 @@ public abstract class JsonrpcOrgRequestTest extends ExampleResourceRequestTest {
                 "e01_positional_parameters_02_request.json",
                 s -> {
                     final JsonrpcRequestMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertEquals("subtract", message.getMethod());
@@ -253,6 +256,7 @@ public abstract class JsonrpcOrgRequestTest extends ExampleResourceRequestTest {
                 "e03_notification_01_request.json",
                 s -> {
                     final JsonrpcRequestMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertEquals("update", message.getMethod());

@@ -47,6 +47,7 @@ public abstract class RandomOrgV2BasicRequestTest
                 "generateIntegers_01_request.json",
                 s -> {
                     final JsonrpcRequestMessage message = fromJson(s);
+                    log.debug("message: {}", message);
                     requireValid(message);
                     {
                         assertEquals("generateIntegers", message.getMethod());
