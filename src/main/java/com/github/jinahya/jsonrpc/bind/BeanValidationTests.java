@@ -20,15 +20,15 @@ package com.github.jinahya.jsonrpc.bind;
  * #L%
  */
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.Set;
 
-import static javax.validation.Validation.byDefaultProvider;
+import static jakarta.validation.Validation.byDefaultProvider;
 
 /**
  * A utility class for Bean-Validation.

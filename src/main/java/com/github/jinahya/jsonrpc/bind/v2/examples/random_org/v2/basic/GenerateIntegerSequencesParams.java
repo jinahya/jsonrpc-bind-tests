@@ -31,6 +31,8 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @ToString
 @Setter
 @Getter
@@ -38,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @Builder
 @Slf4j
-public class GenerateIntegersParams {
+public class GenerateIntegerSequencesParams {
 
     public static final int MIN_N = 1;
 
@@ -68,15 +70,13 @@ public class GenerateIntegersParams {
     @Min(MIN_N)
     private int n;
 
-    @Max(MAX_MIN)
-    @Min(MIN_MIN)
-    private int min;
+    private List<@Min(1) @Max(10000) Integer> length;
 
-    @Max(MAX_MAX)
-    @Min(MIN_MAX)
-    private int max;
+    private List<@Max(MAX_MIN) @Min(MIN_MIN) Integer> min;
 
-    private Boolean replacement;
+    private List<@Max(MAX_MAX) @Min(MIN_MAX) Integer> max;
 
-    private Integer base;
+    private List<Boolean> replacement;
+
+    private List<Integer> base;
 }
