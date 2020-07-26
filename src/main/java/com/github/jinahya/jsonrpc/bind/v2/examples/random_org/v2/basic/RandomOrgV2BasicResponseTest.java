@@ -20,7 +20,7 @@ package com.github.jinahya.jsonrpc.bind.v2.examples.random_org.v2.basic;
  * #L%
  */
 
-import com.github.jinahya.jsonrpc.bind.v2.JsonrpcMessage;
+import com.github.jinahya.jsonrpc.bind.v2.JsonrpcMessageConstants;
 import com.github.jinahya.jsonrpc.bind.v2.JsonrpcResponseMessage;
 import com.github.jinahya.jsonrpc.bind.v2.examples.ExampleResourceResponseTest;
 import lombok.extern.slf4j.Slf4j;
@@ -91,7 +91,7 @@ public abstract class RandomOrgV2BasicResponseTest
     @Test
     public void write_generateInteger_01_response() {
         final JsonrpcResponseMessage message = JsonrpcResponseMessage.newInstance();
-        assertEquals(JsonrpcMessage.PROPERTY_VALUE_JSONRPC, message.getJsonrpc());
+        assertEquals(JsonrpcMessageConstants.PROPERTY_VALUE_JSONRPC, message.getJsonrpc());
         message.setResultAsObject(
                 GenerateIntegersResult.builder()
                         .random(GenerateIntegersResult.Random.builder()
@@ -162,7 +162,7 @@ public abstract class RandomOrgV2BasicResponseTest
     @Test
     public void write_generateInteger_02_response() {
         final JsonrpcResponseMessage message = JsonrpcResponseMessage.newInstance();
-        assertEquals(JsonrpcMessage.PROPERTY_VALUE_JSONRPC, message.getJsonrpc());
+        assertEquals(JsonrpcMessageConstants.PROPERTY_VALUE_JSONRPC, message.getJsonrpc());
         message.setResultAsObject(
                 GenerateIntegersResult.builder()
                         .random(GenerateIntegersResult.Random.builder()
