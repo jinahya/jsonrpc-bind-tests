@@ -29,16 +29,15 @@ import lombok.extern.slf4j.Slf4j;
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
 @Slf4j
-public abstract class JsonrpcMessageTest<T extends AbstractJsonrpcMessage>
-        extends JsonrpcObjectTest<T> {
+public abstract class JsonrpcMessageTest<T extends JsonrpcMessage> extends JsonrpcObjectTest<T> {
 
     /**
      * Creates a new instance with specified message class.
      *
-     * @param clazz the message class to test.
-     * @see #clazz
+     * @param objectClass the message class to test.
+     * @see #objectClass
      */
-    protected JsonrpcMessageTest(final Class<T> clazz) {
-        super(clazz);
+    protected JsonrpcMessageTest(final Class<T> objectClass) {
+        super(objectClass);
     }
 }

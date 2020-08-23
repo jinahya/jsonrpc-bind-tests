@@ -30,17 +30,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @param <T> subclass type parameter
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public abstract class JsonrpcRequestMessageTest<T extends AbstractJsonrpcRequestMessage>
-        extends JsonrpcMessageTest<T> {
+public abstract class JsonrpcRequestMessageTest<T extends JsonrpcRequestMessage> extends JsonrpcMessageTest<T> {
 
     /**
      * Creates a new instance with specified message class.
      *
-     * @param clazz the message class to test.
-     * @see #clazz
+     * @param objectClass the message class to test.
+     * @see #objectClass
      */
-    protected JsonrpcRequestMessageTest(final Class<T> clazz) {
-        super(clazz);
+    protected JsonrpcRequestMessageTest(final Class<T> objectClass) {
+        super(objectClass);
     }
 
     @Test

@@ -37,7 +37,7 @@ public abstract class JsonrpcResponseMessageTest<T extends AbstractJsonrpcRespon
      * Creates a new instance with specified class.
      *
      * @param clazz the class to test.
-     * @see #clazz
+     * @see #objectClass
      */
     protected JsonrpcResponseMessageTest(final Class<T> clazz) {
         super(clazz);
